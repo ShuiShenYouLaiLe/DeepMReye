@@ -45,7 +45,7 @@ def register_to_eye_masks(dme_template, func, masks, verbose=1, transforms=None,
             type_of_transform = transforms[idx]
         register_to_nau = ants.registration(fixed=dme_template, moving=func.get_average_of_timeseries(), aff_random_sampling_rate=1,
                                             type_of_transform=type_of_transform, mask=mask, aff_metric=metric, aff_sampling=512,
-                                            aff_iterations=(200, 200, 200, 10), aff_smoothing_sigmas=(0, 0, 0, 0))
+                                            aff_iterations=(200, 200, 200, 10), aff_smoothing_sigmas=(0, 0, 0, 0), random_seed=1)
         if verbose > 0:
             if 'SyN' in type_of_transform:
                 registered_fwd = loadmat(register_to_nau['fwdtransforms'][1])['AffineTransform_float_3_3']
