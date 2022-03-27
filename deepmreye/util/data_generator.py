@@ -35,8 +35,7 @@ def create_holdout_generators(datasets, train_split=0.6, **args):
     full_training_list, full_testing_list = list(), list()
     for fn_data in datasets:
         this_file_list = [fn_data + p for p in os.listdir(fn_data)]
-        #Attention this part is changed by Jiawei Wang, which is me
-        #np.random.shuffle(this_file_list)
+        np.random.shuffle(this_file_list)
         train_test_split = int(train_split * len(this_file_list))
         this_training_list = this_file_list[0:train_test_split]
         this_testing_list = this_file_list[train_test_split::]
